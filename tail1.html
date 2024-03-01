@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="theme.js"></script>
+    <title>Tail</title>
+    <style>
+        #container{
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #abc{
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .word{
+            display: flex;
+            margin: 2px;
+            justify-content: center;
+            align-items: center;
+            padding-right: 10px;
+            padding-left: 10px;
+            font-size: larger;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid gray;
+            max-width: 25px;
+        }
+
+        .font{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 10px;
+            padding-left: 10px;
+            margin: 3px;
+            font-size: larger;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid gray;
+            max-width: 25px;
+            cursor: pointer;
+        }
+
+        .font:hover{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="abc"></div>
+    <div class="bg-slate-350 dark:bg-slate-700 h-screen flex justify-center items-center relative">
+        <div class="p-5 bg-white dark:bg-slate-400"></div>
+    </div>
+    <button class="absolute right-0 top-0" onclick="toggleTheme()">
+        <span class="hidden text-white" id="light-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+            </svg>              
+        </span>
+        <span id="dark-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+            </svg>              
+        </span>
+    </button>
+    <script src="words.js"></script>
+    <script>
+        //console.log(words.length);
+
+        function toggleTheme(){
+            document.documentElement.classList.toggle('dark')
+            document.getElementById('light-icon').classList.toggle('hidden')
+            document.getElementById('dark-icon').classList.toggle('hidden')
+        }
+
+
+        let randNr = Math.floor(Math.random() * 35) + 1
+        //console.log(randNr);
+
+        let randWord = words[randNr]
+        let randArrWord = Array.from(randWord)
+        console.log(randWord);
+
+        let fonts = Array.from(abc)
+
+        randArrWord.forEach((element,index)=>{
+            document.getElementById('container').innerHTML += `<div class="word">${randArrWord[index]}</div>`
+        })
+
+        fonts.forEach((element,index)=>{
+            document.getElementById('abc').innerHTML += `<button class="font" onclick="katt(this.innerText)">${fonts[index]}</button>`
+        })
+
+        for(let a=0; a<3; a++){
+            let random = Math.floor(Math.random() * randArrWord.length)
+            let hiddenFonts = abc[random]
+            document.getElementById('container').children[random].innerHTML = ""
+        }
+        
+        let tipp = []
+
+        function katt(letter){
+            console.log(letter);
+            tipp.push(letter)
+            document.getElementById('container').children.forEach((e,i)=>{
+                if(tipp.includes(e.innerText)){
+                    document.getElementById('container').children[i].innerHTML = e.innerText
+                }
+            })
+        }
+
+/*
+        console.log(random);
+        console.log(hiddenFonts);
+        console.log(document.getElementById('container').children);
+        console.log( document.getElementById('container').children[random])
+        let randomWord
+
+        function handleKeyUp(){
+            genRandNr()
+            displayWord()
+            displayAbc()
+        }
+*/
+    </script>
+</body>
+</html>

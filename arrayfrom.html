@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="nev" type="text" placeholder="Írd be a neved.." onkeyup="handleKeyUp(event)">
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <script>
+        let nev = "Gyula"
+        console.log(nev[2]); //u
+        console.log(nev.split(''));
+
+        let arr = Array.from(nev)
+        console.log(arr);
+
+        arr = []
+        arr.length = 0
+
+        let nr1 = 10;
+        let nr2 = 100;
+        [nr1, nr2] = [nr2, nr1];
+        /*
+        let temp = nr1
+        nr1 = nr2
+        nr2 = temp*/
+        console.log(nr1, nr2);
+
+        function handleKeyUp(e) {
+            console.log(e.keyCode, target.value);
+        }
+        /*
+                document.getElementById("nev").addEventListener('keyup', (e)=>{
+                    if(e.keyCode===13){
+                        let nev = document.getElementById('nev').value
+                        console.log(e.target);
+                        alert("A beírt név: " + nev)
+                    }
+                })*/
+
+        document.querySelectorAll('.box').forEach((item,index)=>{
+            console.log(item,index);
+            item.textContent = index
+        })
+    </script>
+</body>
+</html>
