@@ -9,7 +9,8 @@ const words = [
     "folyó", "híd", "út", "ország", "város", "falucska", "szomszéd", "bolt", "piac", "étterem",
     "kávézó", "mosoda", "gyógyszertár", "iskola", "óvoda", "egyetem", "színház", "mozi", "múzeum",
     "állomás", "repülőtér", "buszpályaudvar", "kórház", "park", "szórakozóhely", "hotel", "lakás",
-    "ház", "kert", "udvar", "udvarház", "terasz", "társasház", "lakópark", "középület", "panelház"
+    "ház", "kert", "udvar", "udvarház", "terasz", "társasház", "lakópark", "középület", "panelház", 
+    
 ];
 
 const abc = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz";
